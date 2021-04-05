@@ -1,0 +1,48 @@
+<!-- <p>cart works!</p>
+ -->
+
+ <div *ngIf="cartItems.length===0"class="alert alert-info">Your Cart is Empty!</div>
+<ul *ngIf="cartItems.length" class="list-group">
+    <li class="list-group-item" *ngFor="let item of cartItems">
+        <app-cart-item [cartItem]=item></app-cart-item>
+    </li>
+   
+    <li *ngIf="cartTotal" class="list-group-item active">
+        <strong>Total:<br> {{cartTotal|currency:'EUR'}} </strong>
+    </li>
+    <li *ngIf="cartTotal>=500 && cartTotal<1000" class="list-group-item active">
+        <strong>After -10%<br> {{cartTotalWithTenPer|currency:'EUR'}} </strong>
+    </li>
+
+    <li *ngIf="cartTotal>=1000"  class="list-group-item active">
+        <strong>After -20% <br>  {{cartTotalWithTweentyPer|currency:'EUR'}}</strong>
+    </li>
+    <li class="list-group-item active">
+        <button class="btn btn-sm btn-outline-warning" (click)="toggle()" >Checkout</button>
+    </li>
+
+    <br>
+
+
+          <form  *ngIf="show"  [formGroup]="checkoutForm" (ngSubmit)="onSubmit(checkoutForm.value)">
+            <div class="mb-3">
+              <label for="name" id="name">Name:</label>
+              <input id="name" type="text" formControlName="name" required>
+            </div>
+            <div class="mb-3" id="address">
+              <label for="address" class="form-label">Address</label>
+              <input id="address" type="text" formControlName="address" required>
+            </div>
+          
+              <input class="btn btn-sm btn-success " type="submit" value="Purchase">
+            <br>
+
+          </form>
+
+
+
+
+
+</ul>
+
+

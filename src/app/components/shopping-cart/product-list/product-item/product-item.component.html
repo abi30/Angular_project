@@ -1,0 +1,32 @@
+<!-- <p>product-item works!</p> -->
+<div class="card h-100 mb-4 box-shadow">
+    <img class="card-img-top productListImg" src="assets/img/{{productItem.imgUrl}}"alt="Card image cap"/>
+    <div class=" card-body">
+      <p class="card-text">   
+
+                 
+        <!-- {{productItem.destination}}  -->
+          <strong>To:
+            <a routerLink="shoppingTravel/{{productItem.id}}">
+              {{productItem.destination}}
+             </a><br>
+                  For:{{productItem.duration}} <br>
+                  {{productItem.price|currency:"EUR"}}
+         </strong>
+        </p>
+          <p class="card-text">{{productItem.description}}</p>
+            <div class="d-flex justify-content-between align-items-center">
+           <div class="btn-group">
+          <button 
+          type="button" 
+          class="btn btn-sm btn-primary product-btn1"
+          (click)="handleAddToCart()" >Add to Cart</button>
+          <button type="button" class="btn btn-sm btn-outline-secondary product-btn2">View Details</button>
+         
+        </div>
+      </div>
+     </div>
+    <div class="card-footer">
+      <small class="text-muted"><strong>Start:</strong> {{productItem.startDate}} </small>
+    </div>
+  </div>
